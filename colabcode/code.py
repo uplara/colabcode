@@ -39,8 +39,8 @@ class ColabCode:
         #     public_url = tunnel.public_url
         #     ngrok.disconnect(public_url)
         # url = ngrok.connect(port=self.port, options={"bind_tls": True})
-        cm_1 = "ssh -i ~/.ssh/tunnel_uplara tmk@34.71.51.68 'sudo kill $(sudo lsof -t -i:3000)'"
-        cm="ssh -i ~/.ssh/tunnel_uplara -N -R localhost:3000:localhost:3000 tmk@34.71.51.68"
+        cm_1 = "ssh -i ./tunnel_uplara tmk@34.71.51.68 'sudo kill $(sudo lsof -t -i:3000)'"
+        cm="ssh -i ./tunnel_uplara -N -R localhost:3000:localhost:3000 tmk@34.71.51.68"
 
         try:
             out=subprocess.check_output(cm_1,stderr=subprocess.STDOUT,shell=True)
