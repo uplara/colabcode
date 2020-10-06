@@ -39,19 +39,22 @@ class ColabCode:
         #     public_url = tunnel.public_url
         #     ngrok.disconnect(public_url)
         # url = ngrok.connect(port=self.port, options={"bind_tls": True})
-        cm_1 = "ssh -o StrictHostKeyChecking=no -i ./tunnel_uplara tmk@34.71.51.68 'sudo kill $(sudo lsof -t -i:3000)'"
-        cm="ssh -o StrictHostKeyChecking=no -i ./tunnel_uplara -N -R localhost:3000:localhost:3000 tmk@34.71.51.68"
+        cm_0="chmod 400 ./tunnel_uplara"
 
-        # try:
-        #     out=subprocess.check_output(cm_1,stderr=subprocess.STDOUT,shell=True)
-        # except Exception as e:
-        #     print("Error:",e)
+        cm_1 = "ssh -o StrictHostKeyChecking=no -i ./tunnel_uplara tmk@34.71.51.68 'sudo kill $(sudo lsof -t -i:3000)'"
+        cm="chmod 400 ./tunnel_uplara && ssh -o StrictHostKeyChecking=no -i ./tunnel_uplara -N -R localhost:3000:localhost:3000 tmk@34.71.51.68"
+
+        try:
+            out_0=subprocess.check_output(cm_0,stderr=subprocess.STDOUT,shell=True)
+            out=subprocess.check_output(cm_1,stderr=subprocess.STDOUT,shell=True)
+        except Exception as e:
+            print("Error1:",e)
 
         try:
             out=subprocess.Popen(cm,shell=True)
             print(out)
         except Exception as e:
-            print("Error:",e)
+            print("Error2:",e)
         print(f"Code Server can be accessed on: new")
 
     def _run_code(self):
@@ -71,3 +74,6 @@ class ColabCode:
         ) as proc:
             for line in proc.stdout:
                 print(line, end="")
+
+
+# pip install git+https://github.com/uplara/colabcode.git
