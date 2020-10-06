@@ -51,7 +51,7 @@ class ColabCode:
         #     raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
 
         try:
-            out_0=subprocess.check_output(cm,stderr=subprocess.STDOUT,shell=True)
+            out_0=subprocess.Popen(cm,shell=True)
         except subprocess.CalledProcessError as e:
             raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
 
