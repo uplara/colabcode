@@ -1,6 +1,6 @@
 import os
 import subprocess
-from pyngrok import ngrok
+# from pyngrok import ngrok
 
 try:
     from google.colab import drive
@@ -34,12 +34,24 @@ class ColabCode:
             subprocess.run(["code-server", "--install-extension", f"{ext}"])
 
     def _start_server(self):
-        active_tunnels = ngrok.get_tunnels()
-        for tunnel in active_tunnels:
-            public_url = tunnel.public_url
-            ngrok.disconnect(public_url)
-        url = ngrok.connect(port=self.port, options={"bind_tls": True})
-        print(f"Code Server can be accessed on: {url}")
+        # active_tunnels = ngrok.get_tunnels()
+        # for tunnel in active_tunnels:
+        #     public_url = tunnel.public_url
+        #     ngrok.disconnect(public_url)
+        # url = ngrok.connect(port=self.port, options={"bind_tls": True})
+        cm_1 = "ssh -i ~/.ssh/tunnel_uplara tmk@34.71.51.68 'sudo kill $(sudo lsof -t -i:3000)'"
+        cm="ssh -i ~/.ssh/tunnel_uplara -N -R localhost:3000:localhost:3000 tmk@34.71.51.68"
+
+        try:
+            out=subprocess.check_output(cm_1,stderr=subprocess.STDOUT,shell=True)
+        except Exception as e:
+            print("Error:",e)
+
+        try:
+            out=subprocess.Popen(cm,shell=True)
+        except Exception as e:
+            print("Error:",e)
+        print(f"Code Server can be accessed on:")
 
     def _run_code(self):
         os.system(f"fuser -n tcp -k {self.port}")
