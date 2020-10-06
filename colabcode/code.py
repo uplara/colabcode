@@ -42,7 +42,7 @@ class ColabCode:
         cm_0="chmod 400 ./tunnel_uplara"
 
         cm_1 = "ssh -o StrictHostKeyChecking=no -i ./tunnel_uplara tmk@34.71.51.68 'sudo kill $(sudo lsof -t -i:3000)'"
-        cm="chmod 400 ./tunnel_uplara && ssh -o StrictHostKeyChecking=no -i ./tunnel_uplara -N -R localhost:3000:localhost:3000 tmk@34.71.51.68"
+        cm="chmod 400 /content/tunnel_uplara && ssh -o StrictHostKeyChecking=no -i /content/tunnel_uplara -N -R localhost:3000:localhost:3000 tmk@34.71.51.68"
 
         # try:
         #     out_0=subprocess.check_output(cm_0,stderr=subprocess.STDOUT,shell=True)
