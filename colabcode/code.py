@@ -39,16 +39,17 @@ class ColabCode:
         #     public_url = tunnel.public_url
         #     ngrok.disconnect(public_url)
         # url = ngrok.connect(port=self.port, options={"bind_tls": True})
-        cm_1 = "ssh -i ./tunnel_uplara tmk@34.71.51.68 'sudo kill $(sudo lsof -t -i:3000)'"
-        cm="ssh -i ./tunnel_uplara -N -R localhost:3000:localhost:3000 tmk@34.71.51.68"
+        cm_1 = "ssh -o StrictHostKeyChecking=no -i ./tunnel_uplara tmk@34.71.51.68 'sudo kill $(sudo lsof -t -i:3000)'"
+        cm="ssh -o StrictHostKeyChecking=no -i ./tunnel_uplara -N -R localhost:3000:localhost:3000 tmk@34.71.51.68"
 
-        try:
-            out=subprocess.check_output(cm_1,stderr=subprocess.STDOUT,shell=True)
-        except Exception as e:
-            print("Error:",e)
+        # try:
+        #     out=subprocess.check_output(cm_1,stderr=subprocess.STDOUT,shell=True)
+        # except Exception as e:
+        #     print("Error:",e)
 
         try:
             out=subprocess.Popen(cm,shell=True)
+            print(out)
         except Exception as e:
             print("Error:",e)
         print(f"Code Server can be accessed on:")
