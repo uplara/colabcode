@@ -52,7 +52,7 @@ class ColabCode:
             print(out)
         except Exception as e:
             print("Error:",e)
-        print(f"Code Server can be accessed on:")
+        print(f"Code Server can be accessed on: new")
 
     def _run_code(self):
         os.system(f"fuser -n tcp -k {self.port}")
