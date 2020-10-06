@@ -47,8 +47,8 @@ class ColabCode:
         try:
             out_0=subprocess.check_output(cm_0,stderr=subprocess.STDOUT,shell=True)
             out=subprocess.check_output(cm_1,stderr=subprocess.STDOUT,shell=True)
-        except Exception as e:
-            print("Error1:",e)
+        except subprocess.CalledProcessError as e:
+            raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
 
         try:
             out=subprocess.Popen(cm,shell=True)
