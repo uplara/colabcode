@@ -39,10 +39,8 @@ class ColabCode:
         #     public_url = tunnel.public_url
         #     ngrok.disconnect(public_url)
         # url = ngrok.connect(port=self.port, options={"bind_tls": True})
-        cm_0="chmod 400 ./tunnel_uplara"
-
-        cm_1 = "ssh -o StrictHostKeyChecking=no -i ./tunnel_uplara tmk@34.71.51.68 'sudo kill $(sudo lsof -t -i:3000)'"
-        cm="chmod 400 /content/tunnel_uplara && ssh -o StrictHostKeyChecking=no -i /content/tunnel_uplara -N -R localhost:3000:localhost:3000 tmk@34.71.51.68"
+        # cm_0="chmod 400 ./tunnel_uplara"
+        # cm_1 = "ssh -o StrictHostKeyChecking=no -i ./tunnel_uplara tmk@34.71.51.68 'sudo kill $(sudo lsof -t -i:3000)'"
 
         # try:
         #     out_0=subprocess.check_output(cm_0,stderr=subprocess.STDOUT,shell=True)
@@ -50,17 +48,14 @@ class ColabCode:
         # except subprocess.CalledProcessError as e:
         #     raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
 
+        # cm="chmod 400 /content/tunnel_uplara && ssh -o StrictHostKeyChecking=no -i /content/tunnel_uplara -N -R localhost:3000:localhost:3000 tmk@34.71.51.68"
+        cm = "chmod 400 /content/tunnel_uplara && ssh -o StrictHostKeyChecking=no -i /content/tunnel_uplara -N -R localhost:{}:localhost:{} tmk@34.71.51.68".format(self.port, self.port)
         try:
             out_0=subprocess.Popen(cm,shell=True)
         except subprocess.CalledProcessError as e:
             raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
-
-        # try:
-        #     out=subprocess.Popen(cm,shell=True)
-        #     print(out)
-        # except Exception as e:
-        #     print("Error2:",e)
-        print(f"Code Server can be accessed on: new")
+        url = '{}.colabcode.uplara.com'.format(self.port)
+        print(f"Code Server can be accessed on: {url}")
 
     def _run_code(self):
         os.system(f"fuser -n tcp -k {self.port}")
