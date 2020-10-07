@@ -50,8 +50,9 @@ class ColabCode:
 
         # cm="chmod 400 /content/tunnel_uplara && ssh -o StrictHostKeyChecking=no -i /content/tunnel_uplara -N -R localhost:3000:localhost:3000 tmk@34.71.51.68"
         cm = "chmod 400 /content/tunnel_uplara && ssh -o StrictHostKeyChecking=no -i /content/tunnel_uplara -N -R localhost:{}:localhost:{} tmk@34.71.51.68".format(self.port, self.port)
+        print(cm)
         try:
-            out_0=subprocess.Popen(cm,shell=True)
+            out=subprocess.Popen(cm,shell=True)
         except subprocess.CalledProcessError as e:
             raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
         url = '{}.colabcode.uplara.com'.format(self.port)
