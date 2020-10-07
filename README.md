@@ -17,6 +17,7 @@ Run code server on Google Colab or Kaggle Notebooks
 
 ## Getting Started
 
+**Note**: Upload this `uplara_tunnel` i.e. SSH key to local session before doing all of this. (name should not change)
 
 ColabCode also has a command-line script. So you can just run `colabcode` from command line.
 
@@ -67,7 +68,3 @@ Colab starter notebook: [![Open In Colab](https://colab.research.google.com/asse
 `ColabCode` comes pre-installed with some VS Code extensions.
 
 ##### See an example in youtube video     [![YouTube Video](https://img.shields.io/youtube/views/7kTbM3D02jU?style=social)](https://youtu.be/7kTbM3D02jU)
-
-## License
-
-[MIT](LICENSE)
