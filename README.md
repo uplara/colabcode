@@ -10,13 +10,14 @@
 Installation is easy!
 
 ```
-$ pip install colabcode
+$ pip install git+https://github.com/uplara/colabcode.git
 ```
 
 Run code server on Google Colab or Kaggle Notebooks
 
 ## Getting Started
 
+**Note**: Upload this `uplara_tunnel` i.e. SSH key to local session before doing all of this. (name should not change)
 
 ColabCode also has a command-line script. So you can just run `colabcode` from command line.
 
@@ -51,7 +52,15 @@ $ ColabCode()
 # - password: password to protect your code server from being accessed by someone else. Note that there is no password by default!
 # - mount_drive: True or False to mount your Google Drive
 
-$ ColabCode(port=10000, password="abhishek", mount_drive=True)
+# Available Ports
+5000 - 5000.colabcode.uplara.com
+5001 - 5001.colabcode.uplara.com
+5002 - 5002.colabcode.uplara.com
+5003 - 5003.colabcode.uplara.com
+5004 - 5004.colabcode.uplara.com
+5005 - 5005.colabcode.uplara.com
+
+$ ColabCode(port=500X, password="password", mount_drive=True)
 ```
 ## How to use it?
 Colab starter notebook: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/abhishekkrthakur/colabcode/blob/master/colab_starter.ipynb)
@@ -59,7 +68,3 @@ Colab starter notebook: [![Open In Colab](https://colab.research.google.com/asse
 `ColabCode` comes pre-installed with some VS Code extensions.
 
 ##### See an example in youtube video     [![YouTube Video](https://img.shields.io/youtube/views/7kTbM3D02jU?style=social)](https://youtu.be/7kTbM3D02jU)
-
-## License
-
-[MIT](LICENSE)
