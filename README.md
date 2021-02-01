@@ -58,7 +58,10 @@ $ ColabCode()
 5002 - 5002.colabcode.uplara.com
 5003 - 5003.colabcode.uplara.com
 5004 - 5004.colabcode.uplara.com
-5005 - 5005.colabcode.uplara.com
+.
+.
+.
+5025 - 5025.colabcode.uplara.com
 
 $ ColabCode(port=500X, password="password", mount_drive=True)
 ```
