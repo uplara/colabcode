@@ -1,5 +1,7 @@
 import os
 import subprocess
+import pkg_resources
+from shutil import copyfile
 # from pyngrok import ngrok
 
 try:
@@ -47,8 +49,12 @@ class ColabCode:
         #     out=subprocess.check_output(cm_1,stderr=subprocess.STDOUT,shell=True)
         # except subprocess.CalledProcessError as e:
         #     raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
-
+        
         # cm="chmod 400 /content/tunnel_uplara && ssh -o StrictHostKeyChecking=no -i /content/tunnel_uplara -N -R localhost:3000:localhost:3000 tmk@34.71.51.68"
+
+        path = pkg_resources.resource_filename('colabcode', 'tunnel_uplara')
+        print (path)
+        copyfile(path, "/content/tunnel_uplara")
         cm = "chmod 400 /content/tunnel_uplara && ssh -o StrictHostKeyChecking=no -i /content/tunnel_uplara -N -R localhost:{}:localhost:{} tmk@34.71.51.68".format(self.port, self.port)
         try:
             out=subprocess.Popen(cm,shell=True)
