@@ -48,6 +48,8 @@ class ColabCode:
         # except subprocess.CalledProcessError as e:
         #     raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
 
+        import pdb
+        pdb.set_trace()
         # cm="chmod 400 /content/tunnel_uplara && ssh -o StrictHostKeyChecking=no -i /content/tunnel_uplara -N -R localhost:3000:localhost:3000 tmk@34.71.51.68"
         cm = "chmod 400 /content/tunnel_uplara && ssh -o StrictHostKeyChecking=no -i /content/tunnel_uplara -N -R localhost:{}:localhost:{} tmk@34.71.51.68".format(self.port, self.port)
         try:
